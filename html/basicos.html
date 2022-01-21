@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Fundamentos de JavaScript</title>
+    </head>
+    <body>
+        <h1>Fundamentos de JavaScript</h1>
+        <script>
+            // -**********************************-
+            // Clase 22: Prototipos
+            // -**********************************-
+
+            // Funcion Constructora
+            function Animal(name, gender) {
+                // Atributos
+                this.name = name;
+                this.gender = gender;
+                // // Métodos
+                // this.sonar = function () {
+                //     const complementGender =
+                //         this.gender === "M" ? "vivo" : "viva";
+                //     console.log(
+                //         `Hago sonidos porque estoy ${complementGender}`
+                //     );
+                // };
+                // this.saludar = function () {
+                //     console.log(`¡Hola! Soy ${this.name}`);
+                // };
+            }
+
+            // -**********************************-
+
+            // Funcion Constructora a la que agregamos los métodos al Prototipo
+            function Animal(name, gender) {
+                // Atributos
+                this.name = name;
+                this.gender = gender;
+            }
+            // Métodos agregados al prototipo
+            /**
+             * * Permiten ahorrar espacio en memoría ya que no se duplican cada que se genera una instancia.
+             */
+            Animal.prototype.sonar = function () {
+                const complementGender = this.gender === "M" ? "vivo" : "viva";
+                console.log(`Hago sonidos porque estoy ${complementGender}`);
+            };
+            Animal.prototype.saludar = function () {
+                console.log(`¡Hola! Soy ${this.name}`);
+            };
+
+            // Instancias
+            const snoopy = new Animal("Snoopy", "M");
+            const lolaBunny = new Animal("Lola Bunny", "F");
+            console.log(snoopy);
+            console.log(lolaBunny);
+
+            // Ejecucion métodos
+            snoopy.sonar();
+            snoopy.saludar();
+            lolaBunny.sonar();
+            lolaBunny.saludar();
+
+            /**
+             * * **********************************
+             */
+        </script>
+    </body>
+</html>
