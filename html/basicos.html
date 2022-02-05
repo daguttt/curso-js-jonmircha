@@ -14,43 +14,48 @@
             // -**********************************-
 
             // Funcion Constructora
-            function Animal(name, gender) {
-                // Atributos
-                this.name = name;
-                this.gender = gender;
-                // // Métodos
-                // this.sonar = function () {
-                //     const complementGender =
-                //         this.gender === "M" ? "vivo" : "viva";
-                //     console.log(
-                //         `Hago sonidos porque estoy ${complementGender}`
-                //     );
-                // };
-                // this.saludar = function () {
-                //     console.log(`¡Hola! Soy ${this.name}`);
-                // };
-            }
+            // function Animal(name, gender) {
+            // Atributos
+            // this.name = name;
+            // this.gender = gender;
+            // // Métodos
+            /**
+             * ! Estos métodos son generados siempre que se haga una instancia.
+             */
+            // this.sonar = function () {
+            //     const complementGender =
+            //         this.gender === "M" ? "vivo" : "viva";
+            //     console.log(
+            //         `Hago sonidos porque estoy ${complementGender}`
+            //     );
+            // };
+            // this.saludar = function () {
+            //     console.log(`¡Hola! Soy ${this.name}`);
+            // };
+            // }
+            // const snoopy = new Animal("Snoopy", "M");
+            // const lolaBunny = new Animal("Lola Bunny", "F");
 
             // -**********************************-
 
             // Funcion Constructora a la que agregamos los métodos al Prototipo
-            function Animal(name, gender) {
-                // Atributos
-                this.name = name;
-                this.gender = gender;
-            }
+            // function Animal(name, gender) {
+            //     // Atributos
+            //     this.name = name;
+            //     this.gender = gender;
+            // }
             // Métodos agregados al prototipo
             /**
              * * Permiten ahorrar espacio en memoría ya que no se duplican cada que se genera una instancia.
              */
-            Animal.prototype.sonar = function () {
-                const complementGender = this.gender === "M" ? "vivo" : "viva";
-                console.log(`Hago sonidos porque estoy ${complementGender}`);
-            };
-            Animal.prototype.saludar = function () {
-                console.log(`¡Hola! Soy ${this.name}`);
-            };
-            // Instancias de Animal
+            // Animal.prototype.sonar = function () {
+            //     const complementGender = this.gender === "M" ? "vivo" : "viva";
+            //     console.log(`Hago sonidos porque estoy ${complementGender}`);
+            // };
+            // Animal.prototype.saludar = function () {
+            //     console.log(`¡Hola! Soy ${this.name}`);
+            // };
+            // Instancias
             // const snoopy = new Animal("Snoopy", "M");
             // const lolaBunny = new Animal("Lola Bunny", "F");
             // console.log(snoopy);
@@ -62,12 +67,33 @@
             // lolaBunny.sonar();
             // lolaBunny.saludar();
 
+            /**
+             * * **********************************
+             */
+
             // -**********************************-
             // Clase 23: Herencia prototípica
             // -**********************************-
+
+            // ANIMAL
+            function Animal(name, gender) {
+                // Atributos
+                this.name = name;
+                this.gender = gender;
+            }
+            Animal.prototype.sonar = function () {
+                const complementGender = this.gender === "M" ? "vivo" : "viva";
+                console.log(`Hago sonidos porque estoy ${complementGender}`);
+            };
+            Animal.prototype.saludar = function () {
+                console.log(`¡Hola! Soy ${this.name}`);
+            };
+
+            // PERRO
             function Perro(name, gender, size) {
                 this.super = Animal;
                 this.super(name, gender);
+                // Agrega otra propiedad
                 this.size = size;
             }
 
@@ -76,15 +102,25 @@
             // Cambio de constructor: From 'Animal' to 'Perro'
             Perro.prototype.constructor = Perro;
 
+            // Métodos propios de Perro
+            Perro.prototype.ladrar = function () {
+                console.log(`Guuuuaaauuuu. Soy ${this.name}`);
+            };
+
             // Instancia de Perro
             const snoopy = new Perro("Snoopy", "M", 44);
+            // Instancia de Animal
             const lolaBunny = new Animal("Lola Bunny", "F");
-            console.log(snoopy);
-            console.log(lolaBunny);
 
             // Ejecucion métodos
+            console.log("***********Snoopy***********");
+            console.log(snoopy);
             snoopy.sonar();
             snoopy.saludar();
+            snoopy.ladrar();
+
+            console.log("***********Lola Bunny***********");
+            console.log(lolaBunny);
             lolaBunny.sonar();
             lolaBunny.saludar();
 
