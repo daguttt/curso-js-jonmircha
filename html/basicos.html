@@ -50,9 +50,34 @@
             Animal.prototype.saludar = function () {
                 console.log(`¡Hola! Soy ${this.name}`);
             };
+            // Instancias de Animal
+            // const snoopy = new Animal("Snoopy", "M");
+            // const lolaBunny = new Animal("Lola Bunny", "F");
+            // console.log(snoopy);
+            // console.log(lolaBunny);
 
-            // Instancias
-            const snoopy = new Animal("Snoopy", "M");
+            // Ejecucion métodos
+            // snoopy.sonar();
+            // snoopy.saludar();
+            // lolaBunny.sonar();
+            // lolaBunny.saludar();
+
+            // -**********************************-
+            // Clase 23: Herencia prototípica
+            // -**********************************-
+            function Perro(name, gender, size) {
+                this.super = Animal;
+                this.super(name, gender);
+                this.size = size;
+            }
+
+            // Declarar Herencia: Perro de Animal
+            Perro.prototype = new Animal();
+            // Cambio de constructor: From 'Animal' to 'Perro'
+            Perro.prototype.constructor = Perro;
+
+            // Instancia de Perro
+            const snoopy = new Perro("Snoopy", "M", 44);
             const lolaBunny = new Animal("Lola Bunny", "F");
             console.log(snoopy);
             console.log(lolaBunny);
