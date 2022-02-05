@@ -148,9 +148,26 @@
                     console.log(`¡Hola! Soy ${this.name}`);
                 }
             }
+
+            // La herencia se declara junto con la clase misma ('... extends Animal')
+            class Perro extends Animal {
+                constructor(name, gender, size) {
+                    // El método super manda a llamar al constructor de la Clase Padre
+                    super(name, gender);
+                    // Agrego la propiedad size
+                    this.size = size;
+                }
+                sonar() {
+                    console.log("Soy un perro y mi sonido es un ladrido");
+                }
+                ladrar() {
+                    console.log("Guaaau guuuaau!");
+                }
+            }
             // Instancia de la Clase Animal
             const mimi = new Animal("Mimi", "Hembra"),
-                scooby = new Animal("Scooby", "Macho");
+                // Instancia de la Clase Perro
+                scooby = new Perro("Scooby", "Macho", "Gigante");
 
             // Ejecución de Métodos
             console.log(mimi);
@@ -159,6 +176,7 @@
             console.log(scooby);
             scooby.sonar();
             scooby.saludar();
+            scooby.ladrar();
         </script>
     </body>
 </html>
