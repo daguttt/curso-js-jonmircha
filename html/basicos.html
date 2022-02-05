@@ -76,57 +76,89 @@
             // -**********************************-
 
             // ANIMAL
-            function Animal(name, gender) {
-                // Atributos
-                this.name = name;
-                this.gender = gender;
-            }
-            Animal.prototype.sonar = function () {
-                const complementGender = this.gender === "M" ? "vivo" : "viva";
-                console.log(`Hago sonidos porque estoy ${complementGender}`);
-            };
-            Animal.prototype.saludar = function () {
-                console.log(`¡Hola! Soy ${this.name}`);
-            };
+            // function Animal(name, gender) {
+            //     // Atributos
+            //     this.name = name;
+            //     this.gender = gender;
+            // }
+            // Animal.prototype.sonar = function () {
+            //     const complementGender = this.gender === "M" ? "vivo" : "viva";
+            //     console.log(`Hago sonidos porque estoy ${complementGender}`);
+            // };
+            // Animal.prototype.saludar = function () {
+            //     console.log(`¡Hola! Soy ${this.name}`);
+            // };
 
-            // PERRO
-            function Perro(name, gender, size) {
-                this.super = Animal;
-                this.super(name, gender);
-                // Agrega otra propiedad
-                this.size = size;
-            }
+            // // PERRO
+            // function Perro(name, gender, size) {
+            //     this.super = Animal;
+            //     this.super(name, gender);
+            //     // Agrega otra propiedad
+            //     this.size = size;
+            // }
 
-            // Declarar Herencia: Perro de Animal
-            Perro.prototype = new Animal();
-            // Cambio de constructor: From 'Animal' to 'Perro'
-            Perro.prototype.constructor = Perro;
+            // // Declarar Herencia: Perro de Animal
+            // Perro.prototype = new Animal();
+            // // Cambio de constructor: From 'Animal' to 'Perro'
+            // Perro.prototype.constructor = Perro;
 
-            // Métodos propios de Perro
-            Perro.prototype.ladrar = function () {
-                console.log(`Guuuuaaauuuu. Soy ${this.name}`);
-            };
+            // // Métodos propios de Perro
+            // Perro.prototype.ladrar = function () {
+            //     console.log(`Guuuuaaauuuu. Soy ${this.name}`);
+            // };
 
-            // Instancia de Perro
-            const snoopy = new Perro("Snoopy", "M", 44);
-            // Instancia de Animal
-            const lolaBunny = new Animal("Lola Bunny", "F");
+            // // Instancia de Perro
+            // const snoopy = new Perro("Snoopy", "M", 44);
+            // // Instancia de Animal
+            // const lolaBunny = new Animal("Lola Bunny", "F");
 
-            // Ejecucion métodos
-            console.log("***********Snoopy***********");
-            console.log(snoopy);
-            snoopy.sonar();
-            snoopy.saludar();
-            snoopy.ladrar();
+            // // Ejecucion métodos
+            // console.log("***********Snoopy***********");
+            // console.log(snoopy);
+            // snoopy.sonar();
+            // snoopy.saludar();
+            // snoopy.ladrar();
 
-            console.log("***********Lola Bunny***********");
-            console.log(lolaBunny);
-            lolaBunny.sonar();
-            lolaBunny.saludar();
+            // console.log("***********Lola Bunny***********");
+            // console.log(lolaBunny);
+            // lolaBunny.sonar();
+            // lolaBunny.saludar();
 
             /**
              * * **********************************
              */
+
+            // -**********************************-
+            // Clase 24: Clases y Herencia
+            // -**********************************-
+
+            class Animal {
+                constructor(name, gender) {
+                    this.name = name;
+                    this.gender = gender;
+                }
+                sonar() {
+                    const complementTextGender =
+                        this.gender === "Hembra" ? "vivo" : "viva";
+                    console.log(
+                        `Hago sonidos porque estoy ${complementTextGender}`
+                    );
+                }
+                saludar() {
+                    console.log(`¡Hola! Soy ${this.name}`);
+                }
+            }
+            // Instancia de la Clase Animal
+            const mimi = new Animal("Mimi", "Hembra"),
+                scooby = new Animal("Scooby", "Macho");
+
+            // Ejecución de Métodos
+            console.log(mimi);
+            mimi.sonar();
+            mimi.saludar();
+            console.log(scooby);
+            scooby.sonar();
+            scooby.saludar();
         </script>
     </body>
 </html>
