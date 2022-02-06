@@ -156,12 +156,30 @@
                     super(name, gender);
                     // Agrego la propiedad size
                     this.size = size;
+                    this.race = null;
                 }
                 sonar() {
                     console.log("Soy un perro y mi sonido es un ladrido");
                 }
                 ladrar() {
                     console.log("Guaaau guuuaau!");
+                }
+
+                // Método Estático
+                static whatAmI() {
+                    console.log(
+                        `Los perros somos animales mamífeors que pertenecemos a la familia de los caninos. Somos considerados los mejores amigos del hombre.`
+                    );
+                }
+                // Método Getter
+                get getRace() {
+                    return this.race;
+                }
+
+                // Método Setter
+                set setRace(race) {
+                    this.race = race;
+                    console.log(`Agregando raza a ${this.name}`);
                 }
             }
             // Instancia de la Clase Animal
@@ -177,6 +195,18 @@
             scooby.sonar();
             scooby.saludar();
             scooby.ladrar();
+
+            // Ejecucion Getter, Setter y Método Estático
+            /**
+             * A los Getters y Setters de una Clase se acceden como propiedades
+             */
+            // Método Estático de la Clase Perro
+            Perro.whatAmI();
+            // Accediendo a la propiedad raza de Scooby
+            console.log(`Raza de ${scooby.name}: ${scooby.getRace}`);
+            // Añadir raza al Scooby
+            scooby.setRace = "Gran Danés";
+            console.log(`Raza de ${scooby.name}: ${scooby.getRace}`);
         </script>
     </body>
 </html>
