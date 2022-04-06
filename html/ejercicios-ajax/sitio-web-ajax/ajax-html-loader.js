@@ -7,28 +7,33 @@ const getHtml = (options) => {
   xhr.addEventListener("readystatechange", e => {
     if (xhr.readyState !== 4) return;
     if (xhr.status >= 200 && xhr.status < 300) {
-      console.log("Nice")
-      console.log(xhr.responseText)
       onSucces(xhr.responseText)
     } else {
-      onError("Ha ocurrido un error")
+      let message = xhr.statusText || "Ocurrió un error";
+      onError(`Error ${xhr.status}: ${message}`);
     }
   })
   xhr.open("GET", endpoint)
+  xhr.setRequestHeader("Content-type", "text/html; charset=utf-8")
   xhr.send()
 }
+
+d.addEventListener('DOMContentLoaded', e => {
+  const requestOptions = {
+    endpoint: `assets/home.html`,
+    onSucces: (html) => $main.innerHTML = html,
+    onError: (err) => $main.innerHTML = `<h1>${err}</h1>`,
+  }
+  getHtml(requestOptions)
+})
 
 d.addEventListener("click", e => {
   if (e.target.matches(".menu li a")) {
     e.preventDefault();
     const requestOptions = {
       endpoint: e.target.href,
-      onSucces: (html) => {
-        $main.innerHTML = html
-      },
-      onError: (html) => {
-        $main.innerText = html
-      }
+      onSucces: (html) => $main.innerHTML = html,
+      onError: (err) => $main.innerHTML = `<h1>${err}</h1>`,
     }
     getHtml(requestOptions)
   }
